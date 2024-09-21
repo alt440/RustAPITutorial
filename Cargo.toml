@@ -1,0 +1,12 @@
+[package]
+name = "RustAPITutorial"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+warp = "0.2"
+parking_lot = "0.10.0"
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "0.2", features = ["macros"] }
+lazy_static = "1.4" # to have your counter variable
+serde_json = "1.0" # For JSON handling
