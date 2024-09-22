@@ -48,7 +48,7 @@ Disadvantages:
     2. Performance Considerations: While Axum is performant, Warp has a reputation for being slightly faster in certain benchmarks.
     3. Learning the Tower Ecosystem: Understanding the full Tower ecosystem can add complexity, particularly for developers not familiar with its concepts.
 
-Conclusion
+## Conclusion
 
     - Use Warp if you need high performance, advanced filtering capabilities, and a strong emphasis on type safety.  
     - Use Axum if you prefer simplicity in routing, want a smoother learning curve, and benefit from the middleware capabilities provided by the Tower ecosystem.
