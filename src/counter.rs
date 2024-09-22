@@ -7,6 +7,7 @@ lazy_static! {
     static ref GLOBAL_COUNTER: Mutex<i32> = Mutex::new(100);
 }
 
+//the locking mechanism allows for asynchronism handling
 pub fn increment_counter() {
     let mut num = GLOBAL_COUNTER.lock().unwrap();
     *num += 1;

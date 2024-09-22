@@ -20,23 +20,29 @@ async fn main() {
   let all_requests = 
       get_counter.or(increment_counter.or(decrement_counter));
 
+  /*
+  main method serves the API server. This indicates the server runs all the above
+  API endpoints (/getCounter, /incrementCounter, /decrementCounter) on 127.0.0.1:3030
+   */ 
   warp::serve(all_requests)
       .run(([127, 0, 0, 1], 3030))
-      .await;    
-  println!("Hello, world!");
+      .await;
 }
 
 // Function to handle the counter request and return a JSON response
+// IMPORTANT: Note how the following methods' return does not finish with a ;
 fn get_counter() -> warp::reply::Json {
   let count: i32 = counter::get_counter();
   warp::reply::json(&json!({ "counter": count }))
 }
 
+// Function to handle the increment request and return NO response
 fn increment_counter() -> impl warp::Reply {
   counter::increment_counter();
   warp::reply::with_status("", warp::http::StatusCode::NO_CONTENT)
 }
 
+// Function to handle the decrement request and return NO response
 fn decrement_counter() -> impl warp::Reply {
   counter::decrement_counter();
   warp::reply::with_status("", warp::http::StatusCode::NO_CONTENT)
